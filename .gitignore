@@ -1,0 +1,17 @@
+# Ignorowanie wirtualnego środowiska
+.venv/
+venv/
+env/
+
+# Ignorowanie plików modeli i plików danych
+model.safetensors
+cleaned_dataset.csv
+
+# Ignorowanie konfiguracji i plików wrażliwych (opcjonalnie)
+config.json
+tokenizer_config.json
+
+# Ignorowanie plików generowanych automatycznie przez system
+__pycache__/
+*.pyc
+.DS_Store
