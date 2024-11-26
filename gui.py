@@ -5,11 +5,9 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
-from transcription import transcribe_audio
-from emotion_model import predict_emotion
+from logic import process_audio, process_text_analysis
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-
 
 def plot_emotion_pie_chart(figure, canvas, percentages):
     figure.clear()
@@ -111,7 +109,7 @@ class EmotionApp(QWidget):
         # Analyze emotions from the selected audio file
         if hasattr(self, 'file_path'):
             self.progress_bar.setValue(10)  # Update progress bar
-            text = transcribe_audio(self.file_path)  # Convert audio to text
+            text = process_audio(self.file_path)  # Convert audio to text
             self.progress_bar.setValue(50)  # Update progress bar
             self.process_text_analysis(text)  # Process the text for emotion analysis
 
@@ -125,7 +123,7 @@ class EmotionApp(QWidget):
 
     def process_text_analysis(self, text):
         # Analyze emotions in the given text
-        emotion_probabilities, sorted_emotions = predict_emotion(text)
+        emotion_probabilities, sorted_emotions = process_text_analysis(text)
         self.progress_bar.setValue(90)  # Update the progress bar
 
         # Get the top three strongest emotions
