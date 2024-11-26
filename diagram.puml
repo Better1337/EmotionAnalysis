@@ -1,0 +1,13 @@
+@startuml
+start
+:Użytkownik wczytuje plik audio lub wprowadza tekst;
+if (Czy dane wejściowe to plik audio?) then (Tak)
+    :Przekazanie do modułu transkrypcji;
+    :Transkrypcja pliku audio na tekst;
+else (Nie)
+    :Przekazanie wprowadzonego tekstu do dalszej analizy;
+endif
+:Analiza emocji w tekście;
+:Prezentacja wyników użytkownikowi;
+stop
+@enduml
